@@ -91,7 +91,7 @@ chmod +x run_delay_test.sh
 ./run_delay_test.sh
 ```
 
-**Note**: You can modify the parameter `num_group` in line 6 of `run_delay_test.sh` to set the number of groups to be tested. The default value is set as 10 (which is 100 for the representive result in our paper) for shorter running times. Also for the same reason, the configuration parameter `num_published_set` (i.e., the number of published sets for each group) in configuration files is set as 20 (which is 5000 in our paper).
+**Note**: You can modify the parameter `num_group` in line 6 of `run_delay_test.sh` to set the number of groups to be tested. The default value is set as 5 (which is 100 for the representive result in our paper) for shorter running times. Also for the same reason, the configuration parameter `num_published_set` (i.e., the number of published sets for each group) in configuration files is set as 20 (which is 5000 in our paper).
 
 After finishing the evaluation, the results (in `results/evaluation`) can be analyzed.
 

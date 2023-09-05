@@ -3,7 +3,7 @@
 source ../../install/setup.bash
 
 # Predefined Parameter
-num_group=10
+num_group=5
 periods_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/periods"
 
 # Define an array with 9 values to launch 9 executables
@@ -125,5 +125,9 @@ done
 wait
 
 date
+
+cd scripts
+python3 passing_latency_result.py
+python3 reaction_latency_result.py
 
 exit
