@@ -22,7 +22,7 @@ do
     do
         echo "-------------------Evaluation for varied timestamp separation: $j, group: $k.-------------------"
         factor=$((2 * j))
-        result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation_delay/varied_period_factor/varied_period_factor_1.$factor"
+        result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation/varied_period_factor/varied_period_factor_1.$factor"
 
         # Launch each executable in a loop and save the PID to array
         config_index=$((2 + j))
@@ -56,7 +56,7 @@ do
     do
         echo "-------------------Evaluation for different number of channels: $j, group: $k.-------------------"
         channel_num=$j
-        result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation_delay/channel_num/channel_$channel_num"
+        result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation/channel_num/channel_$channel_num"
 
         # Launch each executable in a loop and save the PID to array
         for (( i=0; i<channel_num; i++ ))
@@ -90,11 +90,11 @@ do
     do
         echo "-------------------Evaluation for varied delay: $j, group: $k.-------------------"
         delay_upper=$((10 * j))
-        result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation_delay/varied_delay/random_delay_$delay_upper"
+        result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation/varied_delay/random_delay_$delay_upper"
 
         if [ $j -eq 5 ]
         then
-            result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation_delay/varied_delay/random_nodelay"
+            result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation/varied_delay/random_nodelay"
         fi
 
         # Launch each executable in a loop and save the PID to array

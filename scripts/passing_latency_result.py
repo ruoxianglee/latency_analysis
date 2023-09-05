@@ -14,7 +14,7 @@ channel_index = 0 # Configure to calculate upper bound and observation for diffe
 # results = []
 # period_lower = [10, 20, 30, 40, 50]
 # for period_lower in period_lower:
-#     path="../results/evaluation_delay/varied_periods/varied_period_lower_"+str(period_lower)
+#     path="../results/evaluation/varied_periods/varied_period_lower_"+str(period_lower)
 
 #     avg_upper_bound1, avg_upper_bound2, avg_observed = plc.calculate_average_passing_latency(path, 6, channel_index)
 #     results.append([avg_upper_bound1 * 10, avg_upper_bound2 * 10, avg_observed * 10])
@@ -41,9 +41,9 @@ results = []
 delay_lower = [0, 10, 20, 30, 40]
 for delay_lower in delay_lower:
     if delay_lower == 0:
-        path="../results/evaluation_delay/varied_delay/random_nodelay"
+        path="../results/evaluation/varied_delay/random_nodelay"
     else:
-        path="../results/evaluation_delay/varied_delay/random_delay_"+str(delay_lower)
+        path="../results/evaluation/varied_delay/random_delay_"+str(delay_lower)
 
     avg_upper_bound1, avg_upper_bound2, avg_observed = plc.calculate_average_passing_latency(path, 6, channel_index)
     results.append([avg_upper_bound1 * 10, avg_upper_bound2 * 10, avg_observed * 10])
@@ -69,7 +69,7 @@ lcp.line_chart_plot_varied_delay(results)
 results = []
 channels = [3, 4, 5, 6, 7, 8, 9]
 for channel_num in channels:
-    path="../results/evaluation_delay/channel_num/channel_" + str(channel_num)
+    path="../results/evaluation/channel_num/channel_" + str(channel_num)
 
     avg_upper_bound1, avg_upper_bound2, avg_observed = plc.calculate_average_passing_latency(path, channel_num, channel_index)
     results.append([avg_upper_bound1 * 10, avg_upper_bound2 * 10, avg_observed * 10])
@@ -95,7 +95,7 @@ lcp.line_chart_plot_different_channels(results)
 results = []
 factors = [0, 2, 4, 6, 8]
 for factor in factors:
-    path="../results/evaluation_delay/varied_period_factor/varied_period_factor_1."+str(factor)
+    path="../results/evaluation/varied_period_factor/varied_period_factor_1."+str(factor)
 
     avg_upper_bound1, avg_upper_bound2, avg_observed = plc.calculate_average_passing_latency(path, 6, channel_index)
     results.append([avg_upper_bound1 * 10, avg_upper_bound2 * 10, avg_observed * 10])
@@ -119,7 +119,7 @@ lcp.line_chart_plot_period_factor(results)
 #############################################
 results = []
 for channel in range(6):
-    path="../results/evaluation_delay/channel_num/channel_6"
+    path="../results/evaluation/channel_num/channel_6"
 
     avg_upper_bound1, avg_upper_bound2, avg_observed = plc.calculate_average_passing_latency(path, 6, channel)
     results.append([avg_upper_bound1 * 10, avg_upper_bound2 * 10, avg_observed * 10])
