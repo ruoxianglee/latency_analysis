@@ -4,7 +4,7 @@ source ../../install/setup.bash
 
 # Predefined Parameter
 num_group=10
-periods_path="/home/ros/ros2_humble/src/latency_analysis/periods"
+periods_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/periods"
 
 # Define an array with 9 values to launch 9 executables
 cmds=( "pub1_exe" "pub2_exe" "pub3_exe" "pub4_exe" "pub5_exe" "pub6_exe" "pub7_exe" "pub8_exe" "pub9_exe" )
@@ -22,19 +22,19 @@ do
     do
         echo "-------------------Evaluation for varied timestamp separation: $j, group: $k.-------------------"
         factor=$((2 * j))
-        result_path="/home/ros/ros2_humble/src/latency_analysis/results/evaluation_delay/varied_period_factor/varied_period_factor_1.$factor"
+        result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation_delay/varied_period_factor/varied_period_factor_1.$factor"
 
         # Launch each executable in a loop and save the PID to array
         config_index=$((2 + j))
         for (( i=0; i<channel_num; i++ ))
         do
-            ros2 run latency_analysis ${cmds[i]} $period_lower_limit $periods_path --ros-args --params-file /home/ros/ros2_humble/src/latency_analysis/config/config_$config_index.yaml &
+            ros2 run latency_analysis ${cmds[i]} $period_lower_limit $periods_path --ros-args --params-file /home/"$HOST_NAME"/ros2_humble/src/latency_analysis/config/config_$config_index.yaml &
         done
 
         # Sleep for 2 seconds
         sleep 2
 
-        ros2 run latency_analysis sub_exe $channel_num $result_path $periods_path --ros-args --params-file /home/ros/ros2_humble/src/latency_analysis/config/config_$config_index.yaml
+        ros2 run latency_analysis sub_exe $channel_num $result_path $periods_path --ros-args --params-file /home/"$HOST_NAME"/ros2_humble/src/latency_analysis/config/config_$config_index.yaml
 
         # Sleep for 2 seconds
         sleep 2
@@ -56,18 +56,18 @@ do
     do
         echo "-------------------Evaluation for different number of channels: $j, group: $k.-------------------"
         channel_num=$j
-        result_path="/home/ros/ros2_humble/src/latency_analysis/results/evaluation_delay/channel_num/channel_$channel_num"
+        result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation_delay/channel_num/channel_$channel_num"
 
         # Launch each executable in a loop and save the PID to array
         for (( i=0; i<channel_num; i++ ))
         do
-            ros2 run latency_analysis ${cmds[i]} $period_lower_limit $periods_path --ros-args --params-file /home/ros/ros2_humble/src/latency_analysis/config/config_1.yaml &
+            ros2 run latency_analysis ${cmds[i]} $period_lower_limit $periods_path --ros-args --params-file /home/"$HOST_NAME"/ros2_humble/src/latency_analysis/config/config_1.yaml &
         done
 
         # Sleep for 2 seconds
         sleep 2
 
-        ros2 run latency_analysis sub_exe $channel_num $result_path $periods_path --ros-args --params-file /home/ros/ros2_humble/src/latency_analysis/config/config_1.yaml
+        ros2 run latency_analysis sub_exe $channel_num $result_path $periods_path --ros-args --params-file /home/"$HOST_NAME"/ros2_humble/src/latency_analysis/config/config_1.yaml
 
         # Sleep for 2 seconds
         sleep 2
@@ -90,24 +90,24 @@ do
     do
         echo "-------------------Evaluation for varied delay: $j, group: $k.-------------------"
         delay_upper=$((10 * j))
-        result_path="/home/ros/ros2_humble/src/latency_analysis/results/evaluation_delay/varied_delay/random_delay_$delay_upper"
+        result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation_delay/varied_delay/random_delay_$delay_upper"
 
         if [ $j -eq 5 ]
         then
-            result_path="/home/ros/ros2_humble/src/latency_analysis/results/evaluation_delay/varied_delay/random_nodelay"
+            result_path="/home/"$HOST_NAME"/ros2_humble/src/latency_analysis/results/evaluation_delay/varied_delay/random_nodelay"
         fi
 
         # Launch each executable in a loop and save the PID to array
         config_index=$((6 + j))
         for (( i=0; i<channel_num; i++ ))
         do
-            ros2 run latency_analysis ${cmds[i]} $period_lower_limit $periods_path --ros-args --params-file /home/ros/ros2_humble/src/latency_analysis/config/config_$config_index.yaml &
+            ros2 run latency_analysis ${cmds[i]} $period_lower_limit $periods_path --ros-args --params-file /home/"$HOST_NAME"/ros2_humble/src/latency_analysis/config/config_$config_index.yaml &
         done
 
         # Sleep for 2 seconds
         sleep 2
 
-        ros2 run latency_analysis sub_exe $channel_num $result_path $periods_path --ros-args --params-file /home/ros/ros2_humble/src/latency_analysis/config/config_$config_index.yaml
+        ros2 run latency_analysis sub_exe $channel_num $result_path $periods_path --ros-args --params-file /home/"$HOST_NAME"/ros2_humble/src/latency_analysis/config/config_$config_index.yaml
 
         # Sleep for 2 seconds
         sleep 2
@@ -127,5 +127,3 @@ wait
 date
 
 exit
-
-
