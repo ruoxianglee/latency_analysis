@@ -1,0 +1,6 @@
+observed_best_case_period N
+observed_worst_case_period N
+observed_best_case_transmission_delay N
+observed_worst_case_transmission_delay N
+observed_worst_case_passing_latency N
+observed_worst_case_reaction_latency N

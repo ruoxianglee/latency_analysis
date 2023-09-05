@@ -1,0 +1,2 @@
+# Note
+Each Publisher x will save the period, i.e., $T_i^B$, in this directory. So Subscriber can read this value to initialize Synchronizer (with interface 'setInterMessageLowerBound'). This value is used for message prediction process.
